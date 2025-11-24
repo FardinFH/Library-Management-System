@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stuff Management</title>
+    <link rel="stylesheet" th:href="@{/stuff.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo-area">
+        <img th:src="@{/logo.png}" alt="Logo" class="logo">
+        <h2 class="logo-text">Library LMS</h2>
+    </div>
+
+    <ul class="nav">
+        <li><a th:href="@{/dashboard}">🏠 Dashboard</a></li>
+        <li><a th:href="@{/books}">📚 Books</a></li>
+        <li><a th:href="@{/members}">👥 Members</a></li>
+        <li><a th:href="@{/borrow}">📖 Borrow Books</a></li>
+        <li><a th:href="@{/return}">↩️ Return Books</a></li>
+        <li><a th:href="@{/stuff}">🧑‍🏫 Add Stuffs</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <header>
+        <h1>Stuff Management</h1>
+    </header>
+
+    <section class="add-stuff">
+        <h2>Add New Stuff</h2>
+        <form th:action="@{/stuff/add}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="nid">NID Number</label>
+                <input type="text" id="nid" name="nid" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary (per month)</label>
+                <input type="number" id="salary" name="salary" min="0" step="0.01" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Stuff</button>
+        </form>
+    </section>
+
+    <section class="stuff-list">
+        <h2>Stuff List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>NID</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="stuff : ${stuffs}">
+                <td th:text="${stuff.name}"></td>
+                <td th:text="${stuff.nid}"></td>
+                <td th:text="${stuff.phone}"></td>
+                <td th:text="${stuff.address}"></td>
+                <td th:text="${stuff.salary}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Management</title>
+    <link rel="stylesheet" th:href="@{/books.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo-area">
+        <img th:src="@{/logo.png}" alt="Logo" class="logo">
+        <h2 class="logo-text">Library LMS</h2>
+    </div>
+
+    <ul class="nav">
+        <li><a th:href="@{/dashboard}">🏠 Dashboard</a></li>
+        <li><a th:href="@{/books}">📚 Books</a></li>
+        <li><a th:href="@{/members}">👥 Members</a></li>
+        <li><a th:href="@{/borrow}">📖 Borrow Books</a></li>
+        <li><a th:href="@{/return}">↩️ Return Books</a></li>
+        <li><a th:href="@{/stuff}">🧑‍🏫 Add Stuffs</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <header>
+        <h1>Books Management</h1>
+    </header>
+
+    <section class="add-book">
+        <h2>Add New Book</h2>
+        <form th:action="@{/books/add}" method="post">
+            <div class="form-group">
+                <label for="id">Book ID</label>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div class="form-group">
+                <label for="vendorName">Vendor Name</label>
+                <input type="text" id="vendorName" name="vendorName" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Book Title</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="author">Author Name</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" name="quantity" min="1" required>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" min="0" step="0.01" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Book</button>
+        </form>
+    </section>
+
+    <section class="books-list">
+        <h2>Books List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Vendor Name</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td th:text="${book.id}"></td>
+                <td th:text="${book.vendorName}"></td>
+                <td th:text="${book.title}"></td>
+                <td th:text="${book.author}"></td>
+                <td th:text="${book.quantity}"></td>
+                <td th:text="${book.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>

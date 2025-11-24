@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Books</title>
+    <link rel="stylesheet" th:href="@{/return.css}">
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="logo-area">
+        <img th:src="@{/logo.png}" alt="Logo">
+        <h2>Library LMS</h2>
+    </div>
+    <ul class="nav">
+        <li><a th:href="@{/dashboard}">🏠 Dashboard</a></li>
+        <li><a th:href="@{/books}">📚 Books</a></li>
+        <li><a th:href="@{/members}">👥 Members</a></li>
+        <li><a th:href="@{/borrow}">📖 Borrow Books</a></li>
+        <li><a th:href="@{/return}">↩️ Return Books</a></li>
+        <li><a th:href="@{/stuff}">🧑‍🏫 Add Stuffs</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>Return Books</h1>
+
+    <section class="return-book">
+        <form th:action="@{/return/add}" method="post" th:object="${returnRecord}">
+            <div class="form-group">
+                <label>Student ID</label>
+                <input type="text" th:field="*{studentId}" required>
+            </div>
+            <div class="form-group">
+                <label>Book Name</label>
+                <input type="text" th:field="*{bookName}" required>
+            </div>
+            <div class="form-group">
+                <label>Return Date</label>
+                <input type="date" th:field="*{returnDate}" required>
+            </div>
+            <button type="submit">Returned</button>
+        </form>
+    </section>
+
+    <section class="return-list">
+        <h2>Returned Books</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Student</th>
+                <th>Book</th>
+                <th>Quantity</th>
+                <th>Borrow Date</th>
+                <th>Return Date</th>
+                <th>Penalty</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r : ${returnRecords}">
+                <td th:text="${r.studentName}"></td>
+                <td th:text="${r.bookName}"></td>
+                <td th:text="${r.quantity}"></td>
+                <td th:text="${r.borrowDate}"></td>
+                <td th:text="${r.returnDate}"></td>
+                <td th:text="${r.penalty}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+
+</body>
+</html>

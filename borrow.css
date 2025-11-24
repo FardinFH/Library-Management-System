@@ -1,0 +1,22 @@
+body {margin:0; font-family:Arial, sans-serif; background:#f4f4f4;}
+.sidebar {width:220px; height:100vh; background:#2c3e50; color:white; position:fixed; top:0; left:0; display:flex; flex-direction:column; align-items:center; padding-top:20px;}
+.logo-area{text-align:center; margin-bottom:40px;}
+.logo{width:60px; height:60px;}
+.logo-text{margin:10px 0 0 0; font-size:20px;}
+.nav{list-style:none; padding:0; width:100%;}
+.nav li{width:100%;}
+.nav li a{display:block; padding:12px 20px; color:white; text-decoration:none; width:100%;}
+.nav li a:hover, .nav li a.active{background:#34495e;}
+.main-content{margin-left:220px; padding:20px;}
+header h1{margin:0 0 20px 0;}
+.borrow-form, .borrow-list{background:white; padding:20px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
+.borrow-form h2, .borrow-list h2{margin-top:0;}
+.form-group{margin-bottom:15px; display:flex; flex-direction:column;}
+.form-group label{margin-bottom:5px; font-weight:bold;}
+.form-group input{padding:8px; border-radius:4px; border:1px solid #ccc;}
+.submit-btn{padding:10px 15px; background:#2c3e50; color:white; border:none; border-radius:4px; cursor:pointer;}
+.submit-btn:hover{background:#34495e;}
+table{width:100%; border-collapse:collapse;}
+table thead{background:#2c3e50; color:white;}
+table th, table td{padding:10px; text-align:left; border-bottom:1px solid #ddd;}
+table tbody tr:hover{background:#f1f1f1;}
